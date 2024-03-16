@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('photo.avif');
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 400px;
+      margin: 50px auto;
+      border-radius: 8px;
+      background-image: url('gray.jpg');
+    }
+
+    .login-container button {
+      width: 100%;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-container a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    .nav-container a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-container">
+    <a href="#" class="text-2xl font-bold">StellarHub</a>
+    <div class="hidden sm:block">
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-gray-300">Home</a></li>
+        <li><a href="login.html" class="hover:text-gray-300">Login</a></li>
+        <li><a href="signup.html" class="hover:text-gray-300">Sign Up</a></li>
+        <li><a href="#" class="hover:text-gray-300">Services</a></li>
+        <li><a href="portfolio.html" class="hover:text-gray-300">Portfolio</a></li>
+        <li><a href="contact.html" class="hover:text-gray-300">Contact</a></li>
+      </ul>
+    </div>
+    <div class="sm:hidden">
+      <button id="menuToggle" class="text-gray-500 hover:text-white focus:outline-none">
+        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="login-container">
+    <h2 class="text-3xl font-semibold mb-6 text-gray-800 text-center">Log In</h2>
+    <form action="#" method="post" class="space-y-4">
+      <div class="flex flex-col">
+        <label for="email" class="text-gray-700 font-semibold mb-1 focus: outline-none focus:border-gray-500">Email</label>
+        <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:border-gray-500" required>
+      </div>
+      <div class="flex flex-col">
+        <label for="password" class="text-gray-700 font-semibold mb-1">Password</label>
+        <input type="password" id="password" name="password" class="w-full border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:border-gray-500" required>
+      </div>
+      <button type="submit" class="bg-black text-white py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300">Log In</button>
+    </form>
+    <p class="text-center mt-4 text-gray-700">Don't have an account? <a href="signup.html" class="text-blue-900">Sign Up here</a>.</p>
+  </div>
+
+  <script>
+    function displayData(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const message = `Email: ${email}\nPassword: ${password}`;
+
+      alert(message);
+    }
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', displayData);
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', function () {
+      navContainer.classList.toggle('show-nav');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <!-- Assuming you have Tailwind CSS included -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<style>
+    body {
+      font-family: Arial;
+      font-size: 17px;
+      padding: 8px;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .row {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap; /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+    }
+    
+    .col-25 {
+      -ms-flex: 25%; /* IE10 */
+      flex: 25%;
+    }
+    
+    .col-50 {
+      -ms-flex: 50%; /* IE10 */
+      flex: 50%;
+    }
+    
+    .col-75 {
+      -ms-flex: 75%; /* IE10 */
+      flex: 75%;
+    }
+    
+    .col-25,
+    .col-50,
+    .col-75 {
+      padding: 0 16px;
+    }
+    
+    .container {
+      background-color: #f2f2f2;
+      padding: 5px 20px 15px 20px;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+    }
+    
+    input[type=text] {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    label {
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .icon-container {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      font-size: 24px;
+    }
+    
+    .btn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      width: 100%;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+    
+    .btn:hover {
+      background-color: #45a049;
+    }
+    
+    a {
+      color: #eef1f4;
+    }
+    
+    hr {
+      border: 1px solid lightgrey;
+    }
+    
+    span.price {
+      float: right;
+      color: grey;
+    }
+    
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+    @media (max-width: 800px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+      .col-25 {
+        margin-bottom: 20px;
+      }
+    }
+    </style>
+<body>
+<!-- Navbar -->
+<nav class="bg-black text-white py-4 px-6 md:pt-6 md:pl-4 md:flex justify-between">
+    <!-- Logo and Brand Name -->
+    <div class="flex items-center">
+        <div class="logo bg-white h-10 rounded-full">
+            <img src="Image.png" class="h-10" alt="logo">
+        </div>
+        <div class="text-xl font-bold ml-4">
+            STELLAR HUB
+        </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex ml-auto space-x-4" id="menu-items">
+        <li class="cursor-pointer"><a href="index.html">Home</a></li>
+        <li class="cursor-pointer"><a href="hijab_accessory.html">Hijab Accessories</a></li>
+        <li class="cursor-pointer"><a href="hijabpage.html">Hijab</a></li>
+        <li class="cursor-pointer"><a href="hijabNiqab.html">Niqab</a></li>
+        <li class="cursor-pointer"><a href="hijabGift.html">Gift</a></li>
+        <li class="cursor-pointer"><a href="index.html">Shop</a></li>
+        <a href="hijab-login.html"><li class="cursor-pointer">Login</li></a>
+    </ul>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-black text-white py-2 px-4">
+        <!-- Your navigation links for mobile -->
+        <li class="cursor-pointer"><a href="index.html">Home</a></li>
+        <li class="cursor-pointer"><a href="hijab_accessory.html">Hijab Accessories</a></li>
+        <li class="cursor-pointer"><a href="hijabpage.html">Hijab</a></li>
+        <li class="cursor-pointer"><a href="hijabNiqab.html">Niqab</a></li>
+        <li class="cursor-pointer"><a href="hijabGift.html">Gift</a></li>
+        <li class="cursor-pointer"><a href="index.html">Shop</a></li>
+        <a href="hijab-login.html"><li class="cursor-pointer">Login</li></a>
+    </div>
+    <style>
+        #mobile-menu li {
+            list-style: none;
+        }
+    
+        #mobile-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: white;
+            text-decoration: none;
+        }
+    
+        #mobile-menu a:hover {
+            background-color: gray; /* Adjust the background color on hover as needed */
+        }
+    </style>    
+    <!-- Search and Icons -->
+    <div class="md:flex items-center space-x-4">
+        <input type="text" class="m-4 px-2 py-1 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-sm md:text-base" placeholder="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+        </svg>
+        <a href="hijab-cart.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+            </svg>
+        </a>
+        <a href="hijab-sign.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"/>
+            </svg>
+        </a>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form id="myForm" onsubmit="handleFormSubmit(event)">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Billing Address</h3>
+                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="email" placeholder="john@example.com">
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                        <label for="city"><i class="fa fa-institution"></i> City</label>
+                        <input type="text" id="city" name="city" placeholder="New York">
+            
+                        <div class="row">
+                          <div class="col-50">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="NY">
+                          </div>
+                          <div class="col-50">
+                            <label for="zip">Zip</label>
+                            <input type="text" id="zip" name="zip" placeholder="10001">
+                          </div>
+                        </div>
+                      </div>
+            
+                      <div class="col-50">
+                        <h3>Payment</h3>
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                          <i class="fa fa-cc-visa" style="color:navy;"></i>
+                          <i class="fa fa-cc-amex" style="color:blue;"></i>
+                          <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                          <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <label for="cname">Name on Card</label>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                        <label for="ccnum">Credit card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                        <div class="row">
+                          <div class="col-50">
+                            <label for="expyear">Exp Year</label>
+                            <input type="text" id="expyear" name="expyear" placeholder="2018">
+                          </div>
+                          <div class="col-50">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="352">
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <label>
+                      <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <input type="submit" value="Continue to checkout" class="btn">
+            </form>
+
+            <!-- Display section for entered form data -->
+            <div id="formDataDisplay" class="mt-4"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        var formData = {
+            fullName: document.getElementById('fname').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('adr').value,
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+            zip: document.getElementById('zip').value,
+            cardName: document.getElementById('cname').value,
+            cardNumber: document.getElementById('ccnum').value,
+            expMonth: document.getElementById('expmonth').value,
+            expYear: document.getElementById('expyear').value,
+            cvv: document.getElementById('cvv').value
+        };
+
+        saveFormData(formData);
+        displayFormData(); // Call the function to display the form data
+    }
+
+    function saveFormData(formData) {
+        var storedData = localStorage.getItem('formDataList');
+        var formDataList = storedData ? JSON.parse(storedData) : [];
+         
+        // Add the new form data to the list
+        formDataList.push(formData);
+
+        // Save the updated list to local storage
+        localStorage.setItem('formDataList', JSON.stringify(formDataList));
+    }
+    function deleteRecord(index) {
+    var storedData = localStorage.getItem('formDataList');
+    var formDataList = storedData ? JSON.parse(storedData) : [];
+
+    // Remove the selected record from the list
+    formDataList.splice(index, 1);
+
+    // Save the updated list to local storage
+    localStorage.setItem('formDataList', JSON.stringify(formDataList));
+
+    // Display the updated form data
+    displayFormData();
+}
+
+function editRecord(index) {
+    var storedData = localStorage.getItem('formDataList');
+    var formDataList = storedData ? JSON.parse(storedData) : [];
+
+    // Retrieve the record to be edited
+    var recordToEdit = formDataList[index];
+
+    // Populate form fields with the data from the selected record
+    document.getElementById('fname').value = recordToEdit.fullName;
+    document.getElementById('email').value = recordToEdit.email;
+    // ... (populate other fields)
+    document.getElementById('cvv').value = recordToEdit.cvv;
+
+    // Update the form submit button to indicate editing
+    document.getElementById('submitButton').innerText = 'Update Record';
+
+    // Save the index of the record being edited
+    document.getElementById('editIndex').value = index;
+}
+    function displayFormData() {
+        var formDataDisplay = document.getElementById('formDataDisplay');
+        var storedData = localStorage.getItem('formDataList');
+
+        if (storedData) {
+            var formDataList = JSON.parse(storedData);
+
+            // Construct HTML to display form data
+            var displayHTML = '<h2>Entered Form Data:</h2>';
+
+            formDataList.forEach(function (formData, index) {
+                displayHTML += '<div class="border p-2 mb-2  flex flex-wrap">';
+                    displayHTML += '<div class="w-full md:w-1/2">';
+                displayHTML += '<p><strong>Record #' + (index + 1) + '</strong></p>';
+                displayHTML += '<p>Full Name: ' + formData.fullName + '</p>';
+                displayHTML += '<p>Email: ' + formData.email + '</p>';
+                displayHTML += '<p>Address: ' + formData.address + '</p>';
+    displayHTML += '<p>City: ' + formData.city + '</p>';
+    displayHTML += '<p>State: ' + formData.state + '</p>';
+    displayHTML += '<p>Zip: ' + formData.zip + '</p>';
+    displayHTML += '</div>';
+    displayHTML += '<div class="w-full md:w-1/2">';
+    displayHTML += '<p>Name on Card: ' + formData.cardName + '</p>';
+    displayHTML += '<p>Credit Card Number: ' + formData.cardNumber + '</p>';
+    displayHTML += '<p>Exp Month: ' + formData.expMonth + '</p>';
+    displayHTML += '<p>Exp Year: ' + formData.expYear + '</p>';
+    displayHTML += '<p>CVV: ' + formData.cvv + '</p>';
+    displayHTML += '</div>';
+                // Add similar lines for other form fields
+                displayHTML += '<button onclick="deleteRecord(' + index + ')" class="bg-red-500 text-white p-2">Delete Record</button>';
+                //edit button
+                 
+                displayHTML += '<button onclick="editRecord(' + index + ')" class="bg-blue-500 text-white p-2 mx-2">Edit Record</button>';
+                displayHTML += '</div>';
+                displayHTML += '</div>';
+          
+            });
+
+            formDataDisplay.innerHTML = displayHTML;
+        }
+    }
+// function handleFormSubmit(event) {
+    event.preventDefault();
+
+    var editIndex = document.getElementById('editIndex').value;
+
+    var formData = {
+        // Your existing form data...
+
+    };
+
+    var storedData = localStorage.getItem('formDataList');
+    var formDataList = storedData ? JSON.parse(storedData) : [];
+
+    if (editIndex !== '') {
+        // Update existing record
+        formDataList[editIndex] = formData;
+    } else {
+        // Add new record
+        formDataList.push(formData);
+    }
+
+    // Clear the editIndex and update the form submit button text
+    document.getElementById('editIndex').value = '';
+    document.getElementById('submitButton').innerText = 'Continue to checkout';
+
+    // Save the updated list to local storage
+    localStorage.setItem('formDataList', JSON.stringify(formDataList));
+
+    // Display the updated form data
+    displayFormData();
+
+
+     
+    // Attach the form submission handler to the form
+    document.getElementById('myForm').addEventListener('submit', handleFormSubmit);
+
+    // Call the function to display form data when the page loads
+    displayFormData();
+    document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+    var mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>

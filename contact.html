@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/premium-photo/customer-using-touch-display-shopping-fashion-items-clothing-store-interactive-board-african-american-man-choosing-stylish-clothes-with-different-designs-modern-kiosk-service_482257-63313.jpg?w=2000');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-left: 20px;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 640px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar a {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 p-6">
+    <div class="navbar flex items-center justify-between">
+        <a href="#" class="text-white text-2xl font-bold">StellarHub</a>
+        <div class="hidden sm:block">
+            <ul class="flex space-x-6">
+                <li><a href="project.html" class="hover:text-gray-300">Home</a></li>
+                <li><a href="login.html" class="hover:text-gray-300">Login</a></li>
+                <li><a href="signUp.html" class="hover:text-gray-300">SignUp</a></li>
+                <li><a href="#" class="hover:text-gray-300">Services</a></li>
+                <li><a href="hijab.html" class="hover:text-gray-300">Portfolio</a></li>
+                <li><a href="contact.html" class="hover:text-gray-300">Contact</a></li>
+            </ul>
+        </div>
+        <button id="menuToggle" class="text-white sm:hidden">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="max-w-md mx-auto bg-white rounded p-8 mt-16">
+        <h2 class="text-2xl font-bold mb-6">Contact Us</h2>
+        <form id="contactForm" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            </div>
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Your message"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+            </div>
+            <div>
+                <button type="submit"
+                    class="inline-block px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+            form.reset();
+            alert('Form submitted successfully!');
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', function () {
+            navbar.classList.toggle('show-nav');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing Brand Websites</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    .side-image {
+        width: 50%;
+        height: 73%;
+        background-image: url('illustration.jpg');
+        background-size: cover;
+        background-position: center;
+        top: 50;
+        right: 0;
+        animation: slideInFromRight 1s ease-out forwards;
+    }
+
+    .image-right {
+        width: 50%; /* Set the width to 50% for smaller screens */
+        height: 73%;
+        background-image: url('model.jpg');
+        background-size: cover;
+        background-position: center;
+        animation: slideInFromLeft 1s ease-out forwards;
+    }
+
+    @media (max-width: 768px) {
+        .side-image,
+        .image-right {
+            width: 100%; /* Set the width to 100% for smaller screens */
+        }
+
+        .image-right {
+            display: none;
+        }
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-slide-in 
+    {
+          animation: slideInFromLeft 1s ease-out forwards;
+    }
+    body 
+    {
+      font-family: 'Dancing Script', cursive;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-300">
+
+  <nav class="bg-gray-900 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-3xl font-bold">StellarHub</a>
+      <!-- Use Tailwind CSS classes for responsive design -->
+      <div class="hidden sm:block">
+        <ul class="flex space-x-6">
+          <li><a href="project.html" class="hover:text-gray-300">Home</a></li>
+          <li><a href="login.html" class="hover:text-gray-300">Login</a></li>
+          <li><a href="signUp.html" class="hover:text-gray-300">SignUp</a></li>
+          <li><a href="#" class="hover:text-gray-300">Services</a></li>
+          <li><a href="index.html" class="hover:text-gray-300">Portfolio</a></li>
+          <li><a href="contact.html" class="hover:text-gray-300">Contact</a></li>
+        </ul>
+      </div>
+      <div class="sm:hidden">
+        <button id="menuToggle" class="text-gray-500 hover:text-white focus:outline-none">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Responsive menu content -->
+    <div id="responsiveMenu" class="hidden sm:hidden">
+      <ul class="text-center">
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">Home</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">Login</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">SignUp</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">Services</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">Portfolio</a></li>
+        <li><a href="#" class="block py-2 px-4 hover:bg-gray-800">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="h-screen flex items-center">
+    <div class="w-1/2 bg-cover bg-right image-right">
+      <div class="container mx-auto py-20 px-10 text-left">
+        <h1 class="text-5xl font-bold text-gray-100 mb-4 animate-slide-in">Crafting Stunning Websites for Clothing Brands</h1>
+        <p class="text-lg text-white mb-8 animate-slide-in">Elevate your brand with our bespoke web solutions</p>
+        <div class="flex">
+          <a href="index.html" class="bg-white text-gray-900 py-3 px-8 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300 mr-4">Get Started</a>
+          <a href="signUp.html" class="bg-gray-900 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-gray-800 transition duration-300">Login/Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <div class="side-image"></div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="py-16">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold mb-4">Custom Design</h3>
+          <p class="text-gray-700">Unique, tailor-made designs that reflect your brand's identity.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold mb-4">E-commerce Integration</h3>
+          <p class="text-gray-700">Seamless online shopping experience for your customers.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold mb-4">Responsive Development</h3>
+          <p class="text-gray-700">Websites that look amazing on any device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8">Get in Touch</h2>
+      <p class="text-lg mb-8">Let's discuss how we can help your clothing brand thrive online.</p>
+      <a href="contact.html" class="bg-white text-gray-900 py-3 px-8 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Contact Us</a>
+    </div>
+  </section>
+
+  <script>
+    function showSignupForm() {
+      var signupForm = document.getElementById('signupForm');
+      signupForm.classList.toggle('hidden');
+    }
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('responsiveMenu').classList.toggle('hidden');
+    });
+  </script>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2023 Clothify. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
